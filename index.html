@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The True Cost of War in the Horn of Africa</title>
+    <!-- External libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+    <link rel="icon" href="./assets/favicon/favicon.ico">
+    <link rel="manifest" href="./assets/favicon/site.webmanifest">
+</head>
+<body>
+    <header>
+        <h1>The True Cost of War in the Horn of Africa</h1>
+        <div class="subtitle">A Documentation of Historical Conflicts and Their Devastating Impacts</div>
+    </header>
+    
+    <div class="container">
+        <div class="intro">
+            <p>Wars in the Horn of Africa have extracted an enormous toll in human lives, economic resources, and social development. This site documents the catastrophic costs of major conflicts in the region to demonstrate why further warfare would devastate all countries involved and destabilize the entire region for generations.</p>
+        </div>
+        
+        <div class="tabs">
+            <div class="tab active" data-tab="financial">Financial Costs</div>
+            <div class="tab" data-tab="human">Human Costs</div>
+            <div class="tab" data-tab="infrastructure">Infrastructure Impact</div>
+            <div class="tab" data-tab="timeline">Timeline</div>
+        </div>
+        
+        <div class="tab-content active" data-tab-content="financial">
+            <div class="total-cost">
+                Total Cost of Conflicts: $146+ Billion
+                <div style="font-size: 1rem; color: var(--text-color);">(Adjusted for inflation to 2023 dollars)</div>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="costChart"></canvas>
+            </div>
+            
+            <div class="testimonial scroll-trigger">
+                <p>"When the elephants fight, it is the grass that suffers."</p>
+                <div class="testimonial-author">— African proverb</div>
+            </div>
+        </div>
+        
+        <div class="tab-content" data-tab-content="human">
+            <div class="total-cost">
+                Lives Lost: 800,000+
+                <div style="font-size: 1rem; color: var(--text-color);">With millions more displaced</div>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="humanCostChart"></canvas>
+            </div>
+            
+            <div class="testimonial scroll-trigger">
+                <p>"I lost my entire family in the conflict. My village was destroyed and I spent 12 years in a refugee camp. An entire generation of children grew up knowing only war and displacement. How can we build a future from this?"</p>
+                <div class="testimonial-author">— Refugee from Tigray conflict</div>
+            </div>
+        </div>
+        
+        <div class="tab-content" data-tab-content="infrastructure">
+            <div class="total-cost">
+                Rebuild Costs: $85+ Billion
+                <div style="font-size: 1rem; color: var(--text-color);">Much of which remains unrepaired</div>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="infrastructureChart"></canvas>
+            </div>
+            
+            <div class="testimonial scroll-trigger">
+                <p>"It takes days to transport goods on roads damaged by decades of conflict. Hospitals lack basic equipment, schools are overcrowded, and many rural areas still have no electricity. We're still rebuilding infrastructure destroyed in wars that ended years ago while new conflicts create fresh damage."</p>
+                <div class="testimonial-author">— Regional Development Coordinator</div>
+            </div>
+        </div>
+        
+        <div class="tab-content" data-tab-content="timeline">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Conflicts Timeline</h2>
+            
+            <div class="timeline">
+                <div class="timeline-container left scroll-trigger">
+                    <div class="timeline-content">
+                        <h3>1961-1991: Eritrean War of Independence</h3>
+                        <p>One of the longest conflicts in the region, ultimately leading to Eritrea's independence from Ethiopia.</p>
+                        <p><strong>Cost:</strong> $36.7 billion (adjusted for inflation)</p>
+                    </div>
+                </div>
+                <div class="timeline-container right scroll-trigger">
+                    <div class="timeline-content">
+                        <h3>1977-1978: Ogaden War</h3>
+                        <p>Somalia invaded Ethiopia in an attempt to capture the Ogaden region, leading to massive military expenditures and Soviet involvement.</p>
+                        <p><strong>Cost:</strong> $7.8 billion (adjusted for inflation)</p>
+                    </div>
+                </div>
+                <div class="timeline-container left scroll-trigger">
+                    <div class="timeline-content">
+                        <h3>1998-2000: Ethiopian-Eritrean War</h3>
+                        <p>Border dispute erupted into full-scale war between the former allies, devastating both economies.</p>
+                        <p><strong>Cost:</strong> $25.2 billion (adjusted for inflation)</p>
+                    </div>
+                </div>
+                <div class="timeline-container right scroll-trigger">
+                    <div class="timeline-content">
+                        <h3>2006-present: Ethiopia's Interventions in Somalia</h3>
+                        <p>Multiple military interventions aimed at combating extremist groups in Somalia, with ongoing costs.</p>
+                        <p><strong>Cost:</strong> $7.8 billion (adjusted for inflation)</p>
+                    </div>
+                </div>
+                <div class="timeline-container left scroll-trigger">
+                    <div class="timeline-content">
+                        <h3>2020-2022: Tigray War</h3>
+                        <p>Civil conflict in Ethiopia's northern region with devastating humanitarian consequences.</p>
+                        <p><strong>Cost:</strong> $6.6 billion (adjusted for inflation)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="calculator scroll-trigger" id="costCalculator">
+            <h3>War Cost Calculator: What Could Have Been Built Instead?</h3>
+            <p>Explore how the money spent on wars could have been used for development projects:</p>
+            
+            <div class="calculator-controls">
+                <div class="calculator-control">
+                    <label for="conflict">Select Conflict:</label>
+                    <select id="conflict">
+                        <option value="36.7">Eritrean War of Independence ($36.7B)</option>
+                        <option value="25.2">Ethiopian-Eritrean War ($25.2B)</option>
+                        <option value="7.8">Ogaden War ($7.8B)</option>
+                        <option value="7.8">Somalia Interventions ($7.8B)</option>
+                        <option value="6.6">Tigray War ($6.6B)</option>
+                        <option value="146">All Conflicts Combined ($146B)</option>
+                    </select>
+                </div>
+                
+                <div class="calculator-control">
+                    <label for="project">Select Project Type:</label>
+                    <select id="project">
+                        <option value="school">Schools</option>
+                        <option value="hospital">Hospitals</option>
+                        <option value="road">Roads (km)</option>
+                        <option value="water">Water Systems</option>
+                        <option value="power">Power Plants</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button class="button" id="calculateBtn">Calculate Potential Impact</button>
+            
+            <div class="calculator-result" id="calculatorResult">
+                <p>Select a conflict and project type to see what could have been built instead of funding war.</p>
+            </div>
+        </div>
+        
+        <!-- Hidden report content for PDF generation -->
+        <div id="reportContent" style="display: none;">
+            <h1>The True Cost of War in the Horn of Africa</h1>
+            <h2>Comprehensive Report</h2>
+            
+            <h3>Executive Summary</h3>
+            <p>Wars in the Horn of Africa have cost over $146 billion (adjusted for inflation) and claimed more than 800,000 lives. The economic and social impact has destabilized the region for generations, with reconstruction costs exceeding the original war expenditures.</p>
+            
+            <h3>Major Conflicts</h3>
+            <h4>Eritrean War of Independence (1961-1991)</h4>
+            <p>Cost: $36.7 billion (adjusted for inflation)</p>
+            <p>Human toll: Hundreds of thousands dead</p>
+            <p>Rebuild costs: $36.7 billion</p>
+            
+            <h4>Ethiopian-Eritrean War (1998-2000)</h4>
+            <p>Cost: $25.2 billion (adjusted for inflation)</p>
+            <p>Human toll: 100,000+ dead</p>
+            <p>Rebuild costs: $7 billion</p>
+            
+            <h4>Ogaden War (1977-1978)</h4>
+            <p>Cost: $7.8 billion (adjusted for inflation)</p>
+            <p>Human toll: 60,000+ dead</p>
+            <p>Rebuild costs: $11.7 billion</p>
+            
+            <h4>Ethiopia's Interventions in Somalia (2006-present)</h4>
+            <p>Cost: $7.8 billion (adjusted for inflation)</p>
+            <p>Human toll: Thousands dead, millions displaced</p>
+            <p>Rebuild costs: $9.1 billion (incomplete)</p>
+            
+            <h4>Tigray War (2020-2022)</h4>
+            <p>Cost: $6.6 billion (adjusted for inflation)</p>
+            <p>Human toll: 600,000 dead</p>
+            <p>Rebuild costs: $21.9 billion (estimated)</p>
+            
+            <h3>Long-term Regional Impact</h3>
+            <ul>
+                <li>Massive displacement of populations</li>
+                <li>Destroyed infrastructure that takes decades to rebuild</li>
+                <li>Enormous debt to foreign financiers</li>
+                <li>Regional instability lasting 30-50 years</li>
+                <li>Loss of economic development opportunities</li>
+            </ul>
+            
+            <h3>Conclusion</h3>
+            <p>The pattern is clear: each conflict in the Horn of Africa has left the entire region poorer and more unstable. Future conflicts would likely lead to balkanization and decades of regional instability affecting all countries in the Horn of Africa.</p>
+        </div>
+        
+        <div class="card scroll-trigger">
+            <div class="card-header">
+                <img src="./assets/img/Ethiopia-Eritrea.png" alt="Historical photo" class="card-header-image" />
+                <h2>Eritrean War of Independence (1961-1991)</h2>
+            </div>
+            <div class="card-body">
+                <div class="stat-group">
+                    <div class="stat-box">
+                        <div class="stat-title">War Cost</div>
+                        <div class="stat-value">$36.7 Billion</div>
+                        <div>(Inflation adjusted)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-title">Rebuild Cost</div>
+                        <div class="stat-value">$36.7 Billion</div>
+                        <div>($7.3B Eritrea, $29.4B Ethiopia)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-title">Human Cost</div>
+                        <div class="stat-value">Hundreds of Thousands</div>
+                        <div>Lives lost</div>
+                    </div>
+                </div>
+                <div class="impact">
+                    <div class="impact-title">Long-term Impact:</div>
+                    <ul>
+                        <li>Left both countries in crushing debt</li>
+                        <li>Contributed to the Derg's collapse</li>
+                        <li>Devastated infrastructure across both nations</li>
+                        <li>Generational trauma and displacement</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card scroll-trigger">
+            <div class="card-header">
+                <img src="./assets/img/Ethiopia-Eritrea.png" alt="Historical photo" class="card-header-image" />
+                <h2>Ethiopian-Eritrean War (1998-2000)</h2>
+            </div>
+            <div class="card-body">
+                <div class="stat-group">
+                    <div class="stat-box">
+                        <div class="stat-title">War Cost</div>
+                        <div class="stat-value">$12.6 Billion</div>
+                        <div>Per side (inflation adjusted)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-title">Rebuild Cost</div>
+                        <div class="stat-value">$7 Billion</div>
+                        <div>($4B Ethiopia, $3B Eritrea)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-title">Human Cost</div>
+                        <div class="stat-value">100,000+</div>
+                        <div>Lives lost</div>
+                    </div>
+                </div>
+                <div class="impact">
+                    <div class="impact-title">Long-term Impact:</div>
+                    <ul>
+                        <li>Halted bilateral trade</li>
+                        <li>International isolation of Eritrea</li>
+                        <li>Limited Ethiopian exports</li>
+                        <li>Destabilized regional security</li>
+                        <li>Most costs were debt-financed, creating long-term economic burdens</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card scroll-trigger">
+            <div class="card-header">
+                <img src="./assets/img/Ethiopia-Somalia.png" alt="Historical photo" class="card-header-image" />
+                <h2>Ogaden War (1977-1978)</h2>
+            </div>
+            <div class="card-body">
+                <div class="stat-group">
+                    <div class="stat-box">
+                        <div class="stat-title">War Cost</div>
+                        <div class="stat-value">$7.8 Billion</div>
+                        <div>(Inflation adjusted)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-title">Rebuild Cost</div>
+                        <div class="stat-value">$11.7 Billion</div>
+                        <div>(Neither nation could fully afford)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-title">Human Cost</div>
+                        <div class="stat-value">60,000+</div>
+                        <div>Lives lost</div>
+                    </div>
+                </div>
+                <div class="impact">
+                    <div class="impact-title">Long-term Impact:</div>
+                    <ul>
+                        <li>Destroyed economies in both nations</li>
+                        <li>Ethiopia became dependent on Soviet aid</li>
+                        <li>Somalia plunged into deeper instability</li>
+                        <li>Set the stage for decades of regional tension</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card scroll-trigger">
+            <div class="card-header">
+                <img src="./assets/img/Ethiopia-Somalia.png" alt="Historical photo" class="card-header-image" />
+                <h2>Ethiopia's Interventions in Somalia (2006-present)</h2>
+            </div>
+            <div class="card-body">
+                <div class="stat-group">
+                    <div class="stat-box">
+                        <div class="stat-title">War Cost</div>
+                        <div class="stat-value">$7.8 Billion</div>
+                        <div>For Ethiopia (inflation adjusted)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-title">Rebuild Cost</div>
+                        <div class="stat-value">$9.1 Billion</div>
+                        <div>For Somalia (still incomplete)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-title">Human Cost</div>
+                        <div class="stat-value">Thousands</div>
+                        <div>Lives lost + massive displacement</div>
+                    </div>
+                </div>
+                <div class="impact">
+                    <div class="impact-title">Long-term Impact:</div>
+                    <ul>
+                        <li>Ongoing chaos in Somalia</li>
+                        <li>Massive refugee crises affecting the entire region</li>
+                        <li>Strained regional diplomatic relations</li>
+                        <li>Rise of extremist groups</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card scroll-trigger">
+            <div class="card-header">
+                <img src="./assets/img/Ethiopia.png" alt="Historical photo" class="card-header-image" style="width: 90px;"/>
+                <h2>Tigray War (2020-2022)</h2>
+            </div>
+            <div class="card-body">
+                <div class="stat-group">
+                    <div class="stat-box">
+                        <div class="stat-title">War Cost</div>
+                        <div class="stat-value">$6.6 Billion</div>
+                        <div>(Inflation adjusted)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-title">Rebuild Cost</div>
+                        <div class="stat-value">$21.9 Billion</div>
+                        <div>Estimated for infrastructure & services</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-title">Human Cost</div>
+                        <div class="stat-value">600,000</div>
+                        <div>Lives lost</div>
+                    </div>
+                </div>
+                <div class="impact">
+                    <div class="impact-title">Long-term Impact:</div>
+                    <ul>
+                        <li>Millions internally displaced</li>
+                        <li>Severe damage to healthcare, education, and basic infrastructure</li>
+                        <li>Suspended international aid</li>
+                        <li>Potential for renewed conflict</li>
+                        <li>Severe economic setbacks during a global pandemic</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="conclusion scroll-trigger">
+            <h2>The Pattern Is Clear</h2>
+            <p>Each conflict in the Horn of Africa has left the <strong>ENTIRE REGION POORER</strong> and <strong>MORE UNSTABLE</strong>.</p>
+            <p>History shows that wars in this region guarantee:</p>
+            <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
+                <li>Massive displacement of populations</li>
+                <li>Destroyed infrastructure that takes decades to rebuild</li>
+                <li>Enormous debt to foreign financiers</li>
+                <li>Regional instability lasting 30-50 years</li>
+                <li>Loss of economic development opportunities</li>
+            </ul>
+            <p style="margin-top: 2rem;">Another war would likely lead to Ethiopia's balkanization and decades of regional instability that would affect all countries in the Horn of Africa.</p>
+            <button class="button" id="downloadReport">Download Full Report</button>
+        </div>
+    </div>
+    
+    <div class="share-button" id="shareButton">
+        <svg class="share-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="5" r="3"></circle>
+            <circle cx="6" cy="12" r="3"></circle>
+            <circle cx="18" cy="19" r="3"></circle>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+        </svg>
+        <div class="share-options" id="shareOptions">
+            <div class="share-option">
+                <svg class="icon" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                Facebook
+            </div>
+            <div class="share-option">
+                <svg class="icon" viewBox="0 0 24 24" fill="#1DA1F2"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.018 10.018 0 01-3.127 1.195 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.16a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.902 4.902 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.937 4.937 0 004.604 3.417 9.868 9.868 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63a9.936 9.936 0 002.46-2.548l-.047-.02z"/></svg>
+                Twitter
+            </div>
+            <div class="share-option">
+                <svg class="icon" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+            </div>
+            <div class="share-option">
+                <svg class="icon" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+            </div>
+            <div class="share-option">
+                <svg class="icon" viewBox="0 0 24 24" fill="#EA4335"><path d="M12.0001 0C5.3821 0 0.000152588 5.382 0.000152588 12C0.000152588 18.618 5.3821 24 12.0001 24C18.6181 24 24.0001 18.618 24.0001 12C24.0001 5.382 18.6181 0 12.0001 0ZM19.0761 8.176L17.1051 17.642C16.9881 18.088 16.6841 18.216 16.3161 18.016L13.0561 15.574L11.4821 17.094C11.3521 17.224 11.2441 17.332 10.9921 17.332L11.1641 14.012L16.7001 8.972C16.8981 8.798 16.6601 8.698 16.4001 8.872L9.6261 13.186L6.4061 12.2C5.9681 12.058 5.9561 11.716 6.5041 11.516L18.3281 7.196C18.6961 7.062 19.0201 7.308 19.0761 7.78V8.176Z"/></svg>
+                Telegram
+            </div>
+            <div class="share-option">
+                <svg class="icon" viewBox="0 0 24 24" fill="#FF5700"><path d="M24 11.779c0-1.459-1.192-2.645-2.657-2.645-.715 0-1.363.286-1.84.746-1.81-1.191-4.259-1.949-6.971-2.046l1.483-4.669 4.016.941-.006.058c0 1.193.975 2.163 2.174 2.163 1.198 0 2.173-.97 2.173-2.163s-.975-2.164-2.173-2.164c-.92 0-1.704.574-2.021 1.379l-4.329-1.015c-.189-.046-.381.063-.44.249l-1.654 5.207c-2.838.034-5.409.798-7.3 2.025-.474-.438-1.103-.712-1.799-.712-1.465 0-2.656 1.187-2.656 2.646 0 .97.533 1.811 1.317 2.271-.052.282-.086.567-.086.857 0 3.911 4.808 7.093 10.719 7.093s10.72-3.182 10.72-7.093c0-.274-.029-.544-.075-.81.832-.447 1.405-1.312 1.405-2.318zm-17.224 1.816c0-.868.71-1.575 1.582-1.575.872 0 1.581.707 1.581 1.575s-.709 1.574-1.581 1.574-1.582-.706-1.582-1.574zm9.061 4.669c-.797.793-2.048 1.179-3.824 1.179L12 18.44l-.013.003c-1.777 0-3.028-.386-3.824-1.179-.145-.144-.145-.379 0-.523.145-.145.381-.145.526 0 .65.647 1.729.961 3.298.961l.013.003.013-.003c1.569 0 2.648-.315 3.298-.962.145-.145.381-.144.526 0 .145.145.145.379 0 .524zm-.189-3.095c-.872 0-1.581-.706-1.581-1.574 0-.868.709-1.575 1.581-1.575s1.581.707 1.581 1.575-.709 1.574-1.581 1.574z"/></svg>
+                Reddit
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2025 - The True Cost of War in the Horn of Africa</p>
+        <p>Share this site to promote peace and stability in the Horn of Africa.</p>
+    </footer>
+    
+    <!-- JavaScript files -->
+    <script src="js/data/conflict-data.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/pdf-generator.js"></script>
+    <script src="js/share.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
